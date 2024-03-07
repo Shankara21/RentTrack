@@ -20,7 +20,7 @@ Membuka terminal lalu
 Clone repositori ini ke dalam direktori komputer anda dengan cara
 
 ```bash
-git clone
+https://github.com/Shankara21/RentTrack.git
 ```
 
 ### Backend
