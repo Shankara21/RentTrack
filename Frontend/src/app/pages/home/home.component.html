@@ -1,0 +1,154 @@
+<div class="w-full mt-5 mb-10 text-center">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white"
+  >
+    Streamlining Rental Monitoring for Mining Operations
+  </h1>
+  <p
+    class="mb-6 font-normal text-gray-500 text sm:px-16 xl:px-48 dark:text-gray-400"
+  >
+    Revolutionize rental monitoring in mining. Our app provides real-time
+    insights for tracking equipment, managing contracts, and optimizing
+    resources. Say goodbye to guesswork and hello to precision for maximum
+    efficiency and profitability.
+  </p>
+</div>
+<apx-chart
+  [series]="LineChartOptions?.series"
+  [chart]="LineChartOptions?.chart"
+  [xaxis]="LineChartOptions?.xaxis"
+  [dataLabels]="LineChartOptions?.dataLabels"
+  [grid]="LineChartOptions?.grid"
+  [stroke]="LineChartOptions?.stroke"
+  [title]="LineChartOptions?.title"
+></apx-chart>
+<div class="grid grid-cols-3 gap-3">
+  <div class="bg-white shadow-xl card dark:bg-secondaryDark">
+    <div class="p-1 card-body">
+      <div class="flex items-center justify-between p-4">
+        <h2 class="card-title">Vehicles</h2>
+        <a routerLink="/vehicle" class="cursor-pointer text-cBlue">See all</a>
+      </div>
+      <div class="relative overflow-x-auto shadow-lg sm:rounded-xl">
+        <table
+          class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-opacity-30 dark:bg-secondaryDark dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-2 py-3">No</th>
+              <th scope="col" class="px-2 py-3">Name</th>
+              <th scope="col" class="px-2 py-3">Location</th>
+              <th scope="col" class="px-2 py-3">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of vehicles"
+              class="bg-white border-b dark:bg-secondaryDark dark:border-gray-700"
+            >
+              <th
+                scope="row"
+                class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{ item.index }}
+              </th>
+              <td class="px-3 py-2">
+                {{ item.name }}
+              </td>
+              <td class="px-3 py-2">{{ item.location.name }}</td>
+              <td class="px-3 py-2">{{ item.type }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white shadow-xl card dark:bg-secondaryDark">
+    <div class="p-1 card-body">
+      <div class="flex items-center justify-between p-4">
+        <h2 class="card-title">Location</h2>
+        <a routerLink="/location" class="cursor-pointer text-cBlue">See all</a>
+      </div>
+      <div class="relative overflow-x-auto shadow-lg sm:rounded-xl">
+        <table
+          class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-opacity-30 dark:bg-secondaryDark dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-2 py-3">No</th>
+              <th scope="col" class="px-2 py-3">Name</th>
+              <th scope="col" class="px-2 py-3">Location</th>
+              <th scope="col" class="px-2 py-3">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of locations"
+              class="bg-white border-b dark:bg-secondaryDark dark:border-gray-700"
+            >
+              <th
+                scope="row"
+                class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{ item.index }}
+              </th>
+              <td class="px-3 py-2">
+                {{ item.name }}
+              </td>
+              <td class="px-3 py-2">{{ item.region }}</td>
+              <td class="px-3 py-2">{{ item.type }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white shadow-xl card dark:bg-secondaryDark">
+    <div class="p-1 card-body">
+      <div class="flex items-center justify-between p-4">
+        <h2 class="card-title">Rental Companies</h2>
+        <a routerLink="/rental-company" class="cursor-pointer text-cBlue"
+          >See all</a
+        >
+      </div>
+      <div class="relative overflow-x-auto shadow-lg sm:rounded-xl">
+        <table
+          class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-opacity-30 dark:bg-secondaryDark dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-2 py-3">No</th>
+              <th scope="col" class="px-2 py-3">Name</th>
+              <th scope="col" class="px-2 py-3">phone</th>
+              <th scope="col" class="px-2 py-3">address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of rentalCompanies"
+              class="bg-white border-b dark:bg-secondaryDark dark:border-gray-700"
+            >
+              <th
+                scope="row"
+                class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{ item.index }}
+              </th>
+              <td class="px-3 py-2">
+                {{ item.name }}
+              </td>
+              <td class="px-3 py-2">{{ item.phone }}</td>
+              <td class="px-3 py-2">{{ item.address }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

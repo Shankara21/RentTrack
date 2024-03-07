@@ -1,0 +1,151 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "starter_angular": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/starter_angular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "node_modules/ngx-spinner/animations/ball-8bits.css",
+              "node_modules/ngx-spinner/animations/ball-atom.css",
+              "node_modules/ngx-spinner/animations/ball-beat.css",
+              "node_modules/ngx-spinner/animations/ball-circus.css",
+              "node_modules/ngx-spinner/animations/ball-climbing-dot.css",
+              "node_modules/ngx-spinner/animations/ball-clip-rotate-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-clip-rotate-pulse.css",
+              "node_modules/ngx-spinner/animations/ball-elastic-dots.css",
+              "node_modules/ngx-spinner/animations/ball-fall.css",
+              "node_modules/ngx-spinner/animations/ball-fussion.css",
+              "node_modules/ngx-spinner/animations/ball-grid-beat.css",
+              "node_modules/ngx-spinner/animations/ball-grid-pulse.css",
+              "node_modules/ngx-spinner/animations/ball-newton-cradle.css",
+              "node_modules/ngx-spinner/animations/ball-pulse.css",
+              "node_modules/ngx-spinner/animations/ball-pulse-rise.css",
+              "node_modules/ngx-spinner/animations/ball-pulse-sync.css",
+              "node_modules/ngx-spinner/animations/ball-rotate.css",
+              "node_modules/ngx-spinner/animations/ball-running-dots.css",
+              "node_modules/ngx-spinner/animations/ball-scale.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-scale-pulse.css",
+              "node_modules/ngx-spinner/animations/ball-scale-ripple.css",
+              "node_modules/ngx-spinner/animations/ball-scale-ripple-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-spin.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade-rotating.css",
+              "node_modules/ngx-spinner/animations/ball-spin-fade.css",
+              "node_modules/ngx-spinner/animations/ball-spin-fade-rotating.css",
+              "node_modules/ngx-spinner/animations/ball-spin-rotate.css",
+              "node_modules/ngx-spinner/animations/ball-square-clockwise-spin.css",
+              "node_modules/ngx-spinner/animations/ball-square-spin.css",
+              "node_modules/ngx-spinner/animations/ball-triangle-path.css",
+              "node_modules/ngx-spinner/animations/ball-zig-zag.css",
+              "node_modules/ngx-spinner/animations/ball-zig-zag-deflect.css",
+              "node_modules/ngx-spinner/animations/cube-transition.css",
+              "node_modules/ngx-spinner/animations/fire.css",
+              "node_modules/ngx-spinner/animations/line-scale.css",
+              "node_modules/ngx-spinner/animations/line-scale-party.css",
+              "node_modules/ngx-spinner/animations/line-scale-pulse-out.css",
+              "node_modules/ngx-spinner/animations/line-scale-pulse-out-rapid.css",
+              "node_modules/ngx-spinner/animations/line-spin-clockwise-fade.css",
+              "node_modules/ngx-spinner/animations/line-spin-clockwise-fade-rotating.css",
+              "node_modules/ngx-spinner/animations/line-spin-fade.css",
+              "node_modules/ngx-spinner/animations/line-spin-fade-rotating.css",
+              "node_modules/ngx-spinner/animations/pacman.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "node_modules/ngx-spinner/animations/square-loader.css",
+              "node_modules/ngx-spinner/animations/triangle-skew-spin.css",
+              "node_modules/ngx-spinner/animations/timer.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "starter_angular:build:production"
+            },
+            "development": {
+              "browserTarget": "starter_angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "starter_angular:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "8be9d4d8-58e8-40d3-b5c8-ae9184c10285"
+  }
+}

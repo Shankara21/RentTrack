@@ -1,0 +1,255 @@
+<div
+  class="flex items-center justify-between p-5 mb-5 bg-white shadow-lg rounded-xl dark:bg-secondaryDark"
+>
+  <h1 class="text-3xl font-semibold">Order Detail</h1>
+</div>
+<div class="p-4 bg-white shadow-lg dark:bg-secondaryDark rounded-xl">
+  <div class="flow-root">
+    <dl class="text-sm divide-y divide-gray-100">
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="font-medium">Created By</dt>
+        <dd class="sm:col-span-2">{{ data?.user?.name }}</dd>
+      </div>
+
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="font-medium">Driver</dt>
+        <dd class="sm:col-span-2">{{ data?.driver?.name }}</dd>
+      </div>
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="font-medium">Date</dt>
+        <dd class="sm:col-span-2">
+          <span class="font-semibold">{{ data?.start_date | date }}</span>
+          <span class="mx-2 text-gray-400">to</span>
+          <span class="font-semibold">{{
+            data?.end_date ? (data?.end_date | date) : "-"
+          }}</span>
+        </dd>
+      </div>
+
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="font-medium">Status</dt>
+        <dd class="sm:col-span-2">
+          <ng-container *ngFor="let role of status_colors">
+            <span
+              *ngIf="data?.status === role.name"
+              [class]="
+                'px-2 py-1 text-xs text-white rounded-full ' + role.color
+              "
+              >{{ data?.status }}</span
+            >
+          </ng-container>
+        </dd>
+      </div>
+
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="font-medium">Description</dt>
+        <dd class="sm:col-span-2">{{ data?.description }}</dd>
+      </div>
+      <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+        <dt class="my-auto font-medium">Vehicle Information</dt>
+        <dd class="sm:col-span-2">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm divide-y-2 divide-gray-200">
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td
+                    class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    Name
+                  </td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">:</td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                    {{ data?.vehicle.name }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    Number
+                  </td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">:</td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                    {{ data?.vehicle.number }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    Type
+                  </td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">:</td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                    {{ data?.vehicle.type }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    Last Service Date
+                  </td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">:</td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                    {{ data?.vehicle.last_service | date }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    Location
+                  </td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">:</td>
+                  <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
+                    {{ data?.vehicle.location.name }} -
+                    {{ data?.vehicle.location.type }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+<div class="p-4 mt-5 bg-white shadow-lg dark:bg-secondaryDark rounded-xl">
+  <div class="relative overflow-x-auto shadow-lg sm:rounded-xl">
+    <table
+      class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-opacity-30 dark:bg-secondaryDark dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3 text-center">Name</th>
+          <th scope="col" class="px-6 py-3 text-center">Email</th>
+          <th scope="col" class="px-6 py-3 text-center">Role</th>
+          <th scope="col" class="px-6 py-3 text-center">Approved at</th>
+          <th scope="col" class="px-6 py-3 text-center">Status</th>
+          <th scope="col" class="max-w-[20%] w-full px-6 py-3 text-center">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data?.approval"
+          class="bg-white border-b dark:bg-secondaryDark dark:border-gray-700"
+        >
+          <td class="px-6 py-2 text-center">{{ item.user?.name }}</td>
+          <td class="px-6 py-2 text-center">{{ item.user?.email }}</td>
+          <td class="px-6 py-2 text-center">{{ item.user?.role.name }}</td>
+          <td class="px-6 py-2 text-center">
+            {{ item.approved_at ? (item.approved_at | date) : "-" }}
+          </td>
+          <td class="px-6 py-2 text-center">
+            <ng-container *ngFor="let role of approval_colors">
+              <span
+                *ngIf="item.status === role.name"
+                [class]="
+                  'px-2 py-1 text-xs text-white rounded-full ' + role.color
+                "
+                >{{ item.status }}
+              </span>
+            </ng-container>
+          </td>
+          <td class="px-6 py-2 text-center">
+            <div
+              *ngIf="
+                item.is_allowed && item.status === 'Pending';
+                else elseblock
+              "
+              class="flex items-center justify-center gap-2"
+            >
+              <label
+                for="modal_detail"
+                (click)="form.value.status = 'Approved'; selectedId = item.id"
+                class="flex items-center gap-2 px-3 py-2 text-green-500 duration-300 bg-green-100 cursor-pointer rounded-xl dark:bg-green-200 hover:scale-105 hover:bg-green-500 dark:hover:bg-green-400 hover:text-white dark:bg-opacity-30"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-circle-check"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                  <path d="M9 12l2 2l4 -4" />
+                </svg>
+                Approve
+              </label>
+              <label
+                for="modal_detail"
+                (click)="form.value.status = 'Rejected'; selectedId = item.id"
+                class="flex items-center gap-2 px-3 py-2 text-red-500 duration-300 bg-red-100 cursor-pointer rounded-xl dark:bg-red-200 hover:scale-105 hover:bg-red-500 dark:hover:bg-red-400 hover:text-white dark:bg-opacity-30"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-circle-x"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                  <path d="M10 10l4 4m0 -4l-4 4" />
+                </svg>
+                Reject
+              </label>
+            </div>
+            <ng-template #elseblock> {{ item.message ?? '-' }} </ng-template>
+          </td>
+        </tr>
+        <tr
+          *ngIf="datas?.length === 0"
+          class="bg-white border-b dark:bg-secondaryDark dark:border-gray-700"
+        >
+          <th
+            colspan="9"
+            scope="row"
+            class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            No data available.
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<input type="checkbox" id="modal_detail" class="modal-toggle" />
+<div class="modal" role="dialog" *ngIf="data">
+  <div class="modal-box dark:bg-mainDark dark:text-white">
+    <h3 class="text-lg font-bold">Alert</h3>
+    <p class="mt-5">Are you sure want to {{ form.value.status }} this order?</p>
+    <div class="flex justify-end gap-2 mt-5">
+      <label
+        for="modal_detail"
+        class="px-4 py-2 text-red-500 duration-300 border border-red-500 cursor-pointer rounded-xl hover:bg-red-500 hover:text-white"
+        >Cancel</label
+      >
+      <label
+        (click)="updateData(selectedId)"
+        for="modal_detail"
+        class="px-4 py-2 text-white cursor-pointer bg-cBlue rounded-xl"
+      >
+        Submit
+      </label>
+    </div>
+  </div>
+  <label class="modal-backdrop" for="modal_detail">Close</label>
+</div>

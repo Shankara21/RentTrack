@@ -1,0 +1,44 @@
+<app-spinner></app-spinner>
+<app-alert></app-alert>
+<div class="w-full max-h-screen overflow-hidden bg-white drawer lg:drawer-open dark:bg-secondaryDark dark:text-white">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div
+    *ngIf="
+      !(
+        router.url === '/login' ||
+        router.url === '/register' ||
+        router.url == '/forbidden'
+      )
+    "
+    class="flex gap-4 h-screen flex-col lg:w-[85dvw] bg-slate-100 dark:bg-mainDark drawer-content lg:rounded-l-[40px] p-4"
+  >
+    <div class="w-full">
+      <app-navbar></app-navbar>
+    </div>
+    <div class="flex flex-col flex-1 overflow-auto">
+      <div class="flex-1"><router-outlet></router-outlet></div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <div
+    *ngIf="
+      !(
+        router.url === '/login' ||
+        router.url === '/register' ||
+        router.url == '/forbidden'
+      )
+    "
+    class="drawer-side"
+  >
+    <label
+      for="my-drawer-2"
+      aria-label="close sidebar"
+      class="drawer-overlay"
+    ></label>
+    <app-sidebar></app-sidebar>
+  </div>
+</div>
+
+<div *ngIf="router.url === '/login' || router.url === '/register'">
+  <router-outlet></router-outlet>
+</div>

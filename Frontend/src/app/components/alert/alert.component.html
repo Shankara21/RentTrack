@@ -1,0 +1,184 @@
+<div
+  [@ZoomInOutAnimation]
+  *ngIf="isShow"
+  class="toast toast-top toast-end z-[999999999999999999999999999999999999999999999999999]"
+>
+  <div class="bg-white shadow-xl shadow-gray-300 rounded-3xl" role="alert">
+    <div class="flex p-4">
+      <div
+        class="flex items-center justify-center px-3 text-white {{
+          type == 'success'
+            ? 'bg-green-500'
+            : type == 'danger'
+            ? 'bg-red-500'
+            : type == 'warning'
+            ? 'bg-yellow-500'
+            : 'bg-[#39A7FF]'
+        }} rounded-full w-fit"
+      >
+        <svg
+          *ngIf="type == 'success'"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-check"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 12l5 5l10 -10" />
+        </svg>
+        <svg
+          *ngIf="type == 'danger'"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-alert-triangle"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v4" />
+          <path
+            d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z"
+          />
+          <path d="M12 16h.01" />
+        </svg>
+        <svg
+          *ngIf="type == 'info'"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-info-circle"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+          <path d="M12 9h.01" />
+          <path d="M11 12h1v4h1" />
+        </svg>
+        <svg
+          *ngIf="type == 'warning'"
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-bell"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"
+          />
+          <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+        </svg>
+      </div>
+      <div class="pl-2 text-gray-600">
+        <p class="font-bold">{{ type | titlecase }}!</p>
+        <p>
+          {{ message | titlecase }}
+          <!-- <span class="text-gray-500">9:32 pm - 5/6/2018</span> -->
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center ml-2 duration-300 ease-in-out cursor-pointer hover:scale-105"
+        (click)="isShow = false"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="text-red-500 icon icon-tabler icon-tabler-circle-x"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+          <path d="M10 10l4 4m0 -4l-4 4" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Option -->
+  <!-- <div
+    class="flex justify-between px-6 py-4 text-white {{
+      type == 'success'
+        ? 'bg-green-500'
+        : type == 'danger'
+        ? 'bg-red-500'
+        : type == 'warning'
+        ? 'bg-yellow-500'
+        : 'bg-blue-500'
+    }} rounded-xl"
+  >
+    <div class="flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="mr-6 h-7 w-7"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          *ngIf="type == 'success'"
+          d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"
+        />
+        <path
+          *ngIf="type == 'info'"
+          d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
+        />
+        <path
+          *ngIf="type == 'warning'"
+          d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
+        />
+        <path
+          *ngIf="type == 'danger'"
+          fill-rule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <p>{{ type | titlecase }}! {{ message }}</p>
+    </div>
+    <button
+      class="ml-6 text-green-100 duration-300 rounded hover:text-white"
+      (click)="isShow = false"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div> -->
+</div>
